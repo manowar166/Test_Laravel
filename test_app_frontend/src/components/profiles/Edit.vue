@@ -1,27 +1,27 @@
 <template>
-	<form class="form-horizontal">
+	 <form class="form-horizontal">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Name" v-model="name">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="Name" v-model="user.name">
     </div>
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" v-model="email">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" v-model="user.email">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" v-model="password">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" v-model="user.password">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" @click="update" class="btn btn-default">Register</button>
+      <button type="submit" @click="update" class="btn btn-default">Update</button>
     </div>
   </div>
   
@@ -38,9 +38,7 @@
 
 		 data() {
 		 	 return{
-		 	 	name: '',
-                email: '',
-                password: ''
+		 	 	user: {}
 		 	 }
 		 },
 
@@ -55,8 +53,8 @@
 		 	update () {
 		 		this.$http.put('api/profile/' + + this.$route.params.user, this.user)
 		 		.then(response => {
-		 			swal("Updated!", "Your product has been updated!", "success")
-		 			this.$router.push('/feed')
+		 			swal("Успех!", "Ваш профиль, удачно изменён!", "success")
+		 			this.$router.push('/profile')
 		 		})
 		 	}
 		 }
