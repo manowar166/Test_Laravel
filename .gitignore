@@ -1,0 +1,17 @@
+#Laravel ignore folder
+
+test_app_backend/node_modules
+test_app_backend/public/storage
+test_app_backend/vendor
+test_app_backend/.idea
+test_app_backend/Homestead.json
+test_app_backend/Homestead.yaml
+test_app_backend/.env
+
+
+#Vue ignore folder
+
+test_app_frontend/.DS_Store
+test_app_frontend/node_modules/
+test_app_frontend/dist/
+test_app_frontend/npm-debug.log
