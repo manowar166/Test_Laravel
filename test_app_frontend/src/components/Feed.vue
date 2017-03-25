@@ -1,6 +1,6 @@
 <template>
 	<div>
-	<h1>Feed</h1>
+	<h3 class="text-center">Товары:</h3></br>
 	<my-products>
 		
 	</my-products>

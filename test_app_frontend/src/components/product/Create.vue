@@ -1,5 +1,9 @@
 <template>
-	<div class="row">
+   <div class="create">
+
+   <h3 class="text-center">Создать продукт:</h3>
+   </br>
+    <div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-body">
@@ -19,19 +23,21 @@
 					</div>
 
 					<button class="btn btn-success pull-right" @click="create" v-show="product.name && product.price && product.description">
-						Create
+						Создать
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
+  </div>	
 </template>
 
 <script>
 	export default{
 		 data() {
+
 		 	 return{
-		 	 	product: {
+		 	 	    product: {
 		 	 		name: '',
 		 	 		price: 0,
 		 	 		description: ''

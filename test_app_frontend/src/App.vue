@@ -43,6 +43,10 @@ body {
   line-height: 40px;
 }
 
+.header li {
+  cursor: pointer;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;

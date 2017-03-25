@@ -20,17 +20,17 @@
 		  	   </p>
 
 		  	   <hr>
-
-		  	   <p class="btn btn-danger" role="button" @click="$emit('delete-product')" v-if="product.user_id == authenticatedUser.id">
+               <div class="EditDelete" >
+		  	   <p class="btn btn-danger" role="button" @click="$emit('delete-product')" >
 		  	   	    
 		  	   	    	Delete
-               
-                <router-link
+               </p>
+                <router-link class="btn btn-primary" role="button"
 		  	         :to="'/products/' + product.id + '/edit_prod'">
 		  	        Edit
 		  	    </router-link>
 		  	   	    
-		  	   </p>
+		  	   </div>
               	   
 
 		  </div>

@@ -1,4 +1,6 @@
 <template>
+    <div class="EditProducts">
+    <h3 class="text-center">Редактирование продукта:</h3></br>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
@@ -19,12 +21,13 @@
 					</div>
 
 					<button class="btn btn-success pull-right" @click="update" v-show="product.name && product.price && product.description">
-						Update
+						Сохранить
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
+   </div>	
 </template>
 
 <script>
@@ -52,7 +55,7 @@
 		 	update () {
 		 		this.$http.put('api/products/' + + this.$route.params.product, this.product)
 		 		.then(response => {
-		 			swal("Updated!", "Your product has been updated!", "success")
+		 			swal("Обновлено!", "Ваш продукт успешно редактирован!", "success")
 		 			this.$router.push('/feed')
 		 		})
 		 	}

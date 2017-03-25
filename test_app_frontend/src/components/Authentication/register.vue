@@ -1,23 +1,46 @@
 <template>
   <form class="form-horizontal">
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Name" v-model="user.name">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" v-model="user.email">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" v-model="user.password">
-    </div>
-  </div>
+  
+             <div :class="{'has-error': errors.has('email'), 'form-group': true }">
+             <label for="inputEmail3" class="col-sm-2 control-label">Ваше имя:</label>
+             <div class="col-sm-8">
+                 <input v-validate data-vv-rules="required|alpha|min:5" v-model="user.name" type="name" class="form-control" id="inputEmail3" placeholder="Name" name="name" required autofocus>
+                 <span v-if="errors.has('name')" class="help-block">
+                    <strong>{{ errors.first('name') }}</strong>
+                    </span>
+                  </div>
+                </div>
+
+             <div :class="{'has-error': errors.has('phone'), 'form-group': true }">
+             <label for="inputEmail3" class="col-sm-2 control-label">Телефон:</label>
+             <div class="col-sm-8">
+                 <input v-validate data-vv-rules="required|numeric|min:11" v-model="user.phone" type="phone" class="form-control" id="inputEmail3" placeholder="Phone" name="phone" required autofocus>
+                 <span v-if="errors.has('phone')" class="help-block">
+                    <strong>{{ errors.first('phone') }}</strong>
+                    </span>
+                  </div>
+                </div> 
+
+             <div :class="{'has-error': errors.has('email'), 'form-group': true }">
+             <label for="inputEmail3" class="col-sm-2 control-label">E-mail:</label>
+             <div class="col-sm-8">
+                 <input v-validate data-vv-rules="required|email" v-model="user.email" type="email" class="form-control" id="inputEmail3" placeholder="E-mail" name="email" required autofocus>
+                 <span v-if="errors.has('email')" class="help-block">
+                    <strong>{{ errors.first('email') }}</strong>
+                    </span>
+                  </div>
+                </div> 
+
+             <div :class="{'has-error': errors.has('password'), 'form-group': true }">
+             <label for="inputEmail3" class="col-sm-2 control-label">Пароль:</label>
+             <div class="col-sm-8">
+                 <input v-validate data-vv-rules="required" v-model="user.password" type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password" required autofocus>
+                 <span v-if="errors.has('password')" class="help-block">
+                    <strong>{{ errors.first('password') }}</strong>
+                    </span>
+                  </div>
+                </div>       
+
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
@@ -35,6 +58,7 @@
             user: {
 
             name: '',
+            phone: '',
             email: '',
             password: ''
           }
@@ -44,7 +68,8 @@
      methods:{
           signup () {
               this.$http.post('api/signup',
-               this.user, {headers: {'X-CSRF-TOKEN': 'Laravel.csrfToken'}})
+               this.user, {headers: {'X-CSRF-TOKEN': 'laravel.csrfToken'}})
+
               .then(
                   (response) => console.log(response)  
                 )

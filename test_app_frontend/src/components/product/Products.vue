@@ -42,9 +42,9 @@
               deleteProduct (product) {
                 
                
-                swal({
-                  title: "Are you sure?",
-                  text: "You will not be able to recover this imaginary file!",
+      swal({
+                  title: "Вы уверены что хотите удалить товар?",
+                  text: "",
                   type: "warning",
                   showCancelButton: true,
                   confirmButtonColor: "#DD6B55",

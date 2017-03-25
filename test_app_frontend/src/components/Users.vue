@@ -1,6 +1,6 @@
 <template>
 	<div>
-	<h1>Профили</h1>
+	<h3 class="text-center">Профили пользователей:</h3></br>
 	<my-users>
 		
 	</my-users>

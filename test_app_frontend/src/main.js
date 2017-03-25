@@ -4,13 +4,15 @@ import Router from './routes.js'
 
 import VueResource from 'vue-resource'
 import Auth from './packages/auth/Auth.js'
+import VeeValidate from 'vee-validate'
 
 Vue.use(VueResource)
 Vue.use(Auth)
+Vue.use(VeeValidate)
 
 Vue.http.options.root = 'http://test.app'
 Vue.http.interceptors.push((request, next) => { request.headers.set('Authorization', 'Bearer ' + Vue.auth.getToken()) ,next() })
-
+//Vue.http.interceptors.push((request, next) => {request.headers.set('X-CSRF-TOKEN', 'Laravel.csrfToken' + Vue.auth.getToken()) ,next() })
 
 Router.beforeEach(
      (to, from, next) => {

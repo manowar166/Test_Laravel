@@ -11,32 +11,31 @@
                 </router-link>
 
                 <router-link tag="li" to="/feed" v-if="isAuth">
-                      <a>Feed</a>
+                      <a>Товары</a>
                 </router-link>      
 
                 <router-link tag="li" to="/profile" v-if="isAuth">
-                      <a>Profile</a>
+                      <a>Профили</a>
                 </router-link>
-
+                
                 <router-link tag="li" to="/products/create" v-if="isAuth">
-                      <a>Create</a>
+                      <a>Создать продукт</a>
                 </router-link>  
 
-                <router-link tag="li" to="/test" v-if="isAuth">
-                      <a>test</a>
-                </router-link>   
-            
-                <router-link tag="li" to="/logout" v-if="isAuth">
-                      <a>Logout</a>
-                </router-link>          
+                <li role="presentation" @click="logout"><a v-if="isAuth">Выйти</a></li>     
             
           </ul>
         </nav>
         <h3 class="text-muted">Project name</h3>
       </div>
 </template>
+<style>
+  
+</style>
 
 <script>
+      import swal from 'sweetalert'
+
       export default {
            data () {
                return {
@@ -58,9 +57,26 @@
 
                       console.log(this.$auth.getAuthenticatedUser())
                   })
+                },
+                logout () {
+                     swal({
+                  title: "Уже уходите?",
+                  text: "Вы нажали 'Выйти', если это хотите остаться на сайте нажмите 'Cancel'",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes",
+                  closeOnConfirm: false
+                 },
+                function() {
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('expiration')
+                    window.location.reload("true")  
+                  }); 
+
                 }
+              }
            }
-      }
 </script>
 
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+use Validator;
+
 class UserController extends Controller
 {
     public function index()
@@ -16,12 +18,14 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'phone' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required'
         ]);
         
         $user = new User([
            'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);
@@ -40,9 +44,25 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
-        $user->update($request->all());
+        $user->update([
+                'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
+                ]);
         
         return response()->json($user);
-    }        
+    }
+    
+     public function destroy($id)
+    {
+        try {
+            User::destroy($id);
+            
+            return response([], 204);
+        } catch (\Exception $e) {
+            return response(['egrgergerege', 500]);
+        }
+    }
     
 }

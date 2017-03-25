@@ -32,17 +32,20 @@ const router = new VueRouter({
        	}
        },
 
+
        {
               path: "/profile",
-              component: require('./components/Name.vue'),
+              component: require('./components/Users.vue'),
               meta: {
                      forAuth: true
               }
        },
 
+
+
        {
-              path: "/test",
-              component: require('./components/Test.vue'),
+              path: "/logout",
+              component: require('./components/Authentication/logout.vue'),
               meta: {
                      forAuth: true
               }
